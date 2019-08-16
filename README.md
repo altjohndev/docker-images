@@ -2,5 +2,6 @@
 
 ## Summary
 
-- [Elixir](elixir)
-- [Phoenix](phoenix)
+- [docker-compose](docker-compose)
+- [elixir](elixir)
+- [phoenix](phoenix)
