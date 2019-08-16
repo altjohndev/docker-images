@@ -1,0 +1,95 @@
+image: arkye/docker-compose
+services:
+  - docker:dind
+stages:
+  - update core image
+  - update related image
+before_script:
+  - docker login --username $DOCKER_HUB_USERNAME --password $DOCKER_HUB_PASSWORD
+
+# Core
+
+.update_core_image: &update_core_image
+  stage: update core image
+  script:
+    - docker-compose -f $DOCKER_COMPOSE_FILE build $DOCKER_COMPOSE_SERVICE
+    - docker-compose -f $DOCKER_COMPOSE_FILE push $DOCKER_COMPOSE_SERVICE
+  except:
+    - /^((?!master).)*$/
+  tags:
+    - docker
+
+docker-compose:
+  <<: *update_core_image
+  variables:
+    DOCKER_COMPOSE_FILE: docker-compose/docker-compose.yml
+    DOCKER_COMPOSE_SERVICE: docker-compose
+  only:
+    changes:
+      - docker-compose/docker/Dockerfile
+
+elixir:
+  <<: *update_core_image
+  variables:
+    DOCKER_COMPOSE_FILE: elixir/docker-compose.yml
+    DOCKER_COMPOSE_SERVICE: elixir
+  only:
+    changes:
+      - elixir/docker/Dockerfile
+
+elixir alpine:
+  <<: *update_core_image
+  variables:
+    DOCKER_COMPOSE_FILE: elixir/docker-compose.yml
+    DOCKER_COMPOSE_SERVICE: elixir.alpine
+  only:
+    changes:
+      - elixir/docker/alpine.Dockerfile
+
+# Related
+
+.update_related_image: &update_related_image
+  stage: update related image
+  script:
+    - docker-compose -f $DOCKER_COMPOSE_FILE build $DOCKER_COMPOSE_SERVICE
+    - docker-compose -f $DOCKER_COMPOSE_FILE push $DOCKER_COMPOSE_SERVICE
+  except:
+    - /^((?!master).)*$/
+  tags:
+    - docker
+
+phoenix:
+  <<: *update_related_image
+  variables:
+    DOCKER_COMPOSE_FILE: phoenix/docker-compose.yml
+    DOCKER_COMPOSE_SERVICE: phoenix
+  only:
+    changes:
+      - phoenix/docker/Dockerfile
+
+phoenix nodeless:
+  <<: *update_related_image
+  variables:
+    DOCKER_COMPOSE_FILE: phoenix/docker-compose.yml
+    DOCKER_COMPOSE_SERVICE: phoenix.nodeless
+  only:
+    changes:
+      - phoenix/docker/nodeless.Dockerfile
+
+phoenix alpine:
+  <<: *update_related_image
+  variables:
+    DOCKER_COMPOSE_FILE: phoenix/docker-compose.yml
+    DOCKER_COMPOSE_SERVICE: phoenix.alpine
+  only:
+    changes:
+      - phoenix/docker/alpine.Dockerfile
+
+phoenix alpine nodeless:
+  <<: *update_related_image
+  variables:
+    DOCKER_COMPOSE_FILE: phoenix/docker-compose.yml
+    DOCKER_COMPOSE_SERVICE: phoenix.alpine.nodeless
+  only:
+    changes:
+      - phoenix/docker/alpine-nodeless.Dockerfile

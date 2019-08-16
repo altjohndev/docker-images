@@ -1,0 +1,26 @@
+version: '3.7'
+
+services:
+  phoenix:
+    image: arkye/phoenix:latest
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+
+  phoenix.nodeless:
+    image: arkye/phoenix:nodeless
+    build:
+      context: .
+      dockerfile: docker/nodeless.Dockerfile
+
+  phoenix.alpine:
+    image: arkye/phoenix:alpine
+    build:
+      context: .
+      dockerfile: docker/alpine.Dockerfile
+
+  phoenix.alpine.nodeless:
+    image: arkye/phoenix:alpine-nodeless
+    build:
+      context: .
+      dockerfile: docker/alpine-nodeless.Dockerfile
