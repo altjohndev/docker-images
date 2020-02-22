@@ -70,6 +70,17 @@ erlang alpine:
       - erlang/docker/alpine.Dockerfile
       - erlang/docker-compose.yml
 
+google cloud manager:
+  <<: *update_core_image
+  variables:
+    DOCKER_COMPOSE_FILE: google-cloud-manager/docker-compose.yml
+    DOCKER_COMPOSE_SERVICE: manager
+  only:
+    changes:
+      - .gitlab-ci.yml
+      - google-cloud-manager/docker/Dockerfile
+      - google-cloud-manager/docker-compose.yml
+
 # Related
 
 .update_related_image: &update_related_image
