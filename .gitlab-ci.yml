@@ -26,6 +26,7 @@ docker-compose:
     DOCKER_COMPOSE_SERVICE: docker-compose
   only:
     changes:
+      - .gitlab-ci.yml
       - docker-compose/docker/Dockerfile
 
 elixir:
@@ -44,7 +45,30 @@ elixir alpine:
     DOCKER_COMPOSE_SERVICE: elixir.alpine
   only:
     changes:
+      - .gitlab-ci.yml
       - elixir/docker/alpine.Dockerfile
+
+erlang:
+  <<: *update_core_image
+  variables:
+    DOCKER_COMPOSE_FILE: erlang/docker-compose.yml
+    DOCKER_COMPOSE_SERVICE: erlang
+  only:
+    changes:
+      - .gitlab-ci.yml
+      - erlang/docker/Dockerfile
+      - erlang/docker-compose.yml
+
+erlang alpine:
+  <<: *update_core_image
+  variables:
+    DOCKER_COMPOSE_FILE: erlang/docker-compose.yml
+    DOCKER_COMPOSE_SERVICE: erlang.alpine
+  only:
+    changes:
+      - .gitlab-ci.yml
+      - erlang/docker/alpine.Dockerfile
+      - erlang/docker-compose.yml
 
 # Related
 
@@ -65,6 +89,7 @@ phoenix:
     DOCKER_COMPOSE_SERVICE: phoenix
   only:
     changes:
+      - .gitlab-ci.yml
       - phoenix/docker/Dockerfile
 
 phoenix nodeless:
@@ -74,6 +99,7 @@ phoenix nodeless:
     DOCKER_COMPOSE_SERVICE: phoenix.nodeless
   only:
     changes:
+      - .gitlab-ci.yml
       - phoenix/docker/nodeless.Dockerfile
 
 phoenix alpine:
@@ -83,6 +109,7 @@ phoenix alpine:
     DOCKER_COMPOSE_SERVICE: phoenix.alpine
   only:
     changes:
+      - .gitlab-ci.yml
       - phoenix/docker/alpine.Dockerfile
 
 phoenix alpine nodeless:
@@ -92,4 +119,5 @@ phoenix alpine nodeless:
     DOCKER_COMPOSE_SERVICE: phoenix.alpine.nodeless
   only:
     changes:
+      - .gitlab-ci.yml
       - phoenix/docker/alpine-nodeless.Dockerfile
