@@ -1,0 +1,8 @@
+version: '3.7'
+
+services:
+  manager:
+    image: altjohndev/ansible:latest
+    build:
+      context: .
+      dockerfile: docker/Dockerfile

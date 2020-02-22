@@ -2,6 +2,7 @@
 
 ## Summary
 
+- [ansible](ansible)
 - [docker-compose](docker-compose)
 - [elixir](elixir)
 - [erlang](erlang)

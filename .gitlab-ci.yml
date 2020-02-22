@@ -19,6 +19,17 @@ before_script:
   tags:
     - docker
 
+ansible:
+  <<: *update_core_image
+  variables:
+    DOCKER_COMPOSE_FILE: ansible/docker-compose.yml
+    DOCKER_COMPOSE_SERVICE: manager
+  only:
+    changes:
+      - .gitlab-ci.yml
+      - ansible/docker/Dockerfile
+      - ansible/docker-compose.yml
+
 docker-compose:
   <<: *update_core_image
   variables:
