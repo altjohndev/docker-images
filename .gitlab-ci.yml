@@ -1,4 +1,4 @@
-image: arkye/docker-compose
+image: altjohndev/docker-compose
 services:
   - docker:dind
 stages:

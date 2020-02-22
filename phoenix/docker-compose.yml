@@ -2,25 +2,25 @@ version: '3.7'
 
 services:
   phoenix:
-    image: arkye/phoenix:latest
+    image: altjohndev/phoenix:latest
     build:
       context: .
       dockerfile: docker/Dockerfile
 
   phoenix.nodeless:
-    image: arkye/phoenix:nodeless
+    image: altjohndev/phoenix:nodeless
     build:
       context: .
       dockerfile: docker/nodeless.Dockerfile
 
   phoenix.alpine:
-    image: arkye/phoenix:alpine
+    image: altjohndev/phoenix:alpine
     build:
       context: .
       dockerfile: docker/alpine.Dockerfile
 
   phoenix.alpine.nodeless:
-    image: arkye/phoenix:alpine-nodeless
+    image: altjohndev/phoenix:alpine-nodeless
     build:
       context: .
       dockerfile: docker/alpine-nodeless.Dockerfile

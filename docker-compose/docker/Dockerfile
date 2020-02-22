@@ -1,4 +1,4 @@
-FROM docker:19.03
+FROM docker:19.03.6
 
 RUN apk add --no-cache \
         curl \
@@ -14,4 +14,4 @@ RUN apk add --no-cache \
     && pip install \
           --no-cache-dir \
           --ignore-installed \
-          docker-compose==1.24.1
+          docker-compose==1.25.4

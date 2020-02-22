@@ -6,7 +6,7 @@
 
 - `latest`: Version used for development.
 
-  - **elixir**: `1.9`
+  - **elixir**: `1.10.0`
 - `alpine`: Version used for production.
 
-  - **elixir**: `1.9`
+  - **elixir**: `1.10.0`

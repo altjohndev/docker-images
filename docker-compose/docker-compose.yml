@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   docker-compose:
-    image: arkye/docker-compose:latest
+    image: altjohndev/docker-compose:latest
     build:
       context: .
       dockerfile: docker/Dockerfile

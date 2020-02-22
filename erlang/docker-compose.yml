@@ -1,14 +1,14 @@
 version: '3.7'
 
 services:
-  elixir:
-    image: altjohndev/elixir:latest
+  erlang:
+    image: altjohndev/erlang:latest
     build:
       context: .
       dockerfile: docker/Dockerfile
 
-  elixir.alpine:
-    image: altjohndev/elixir:alpine
+  erlang.alpine:
+    image: altjohndev/erlang:alpine
     build:
       context: .
       dockerfile: docker/alpine.Dockerfile
