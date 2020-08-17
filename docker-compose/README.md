@@ -6,8 +6,8 @@
 
 - `latest`: Version used as main source for [GitLab CI](https://docs.gitlab.com/ee/ci/) pipelines.
 
-  - **docker**: `19.03.6`
-  - **docker-compose**: `1.25.4`
+  - **docker**: `19.03.12`
+  - **docker-compose**: `1.26.2`
   - **curl**: From docker image apk repository
   - **gcc**: From docker image apk repository
   - **git**: From docker image apk repository
