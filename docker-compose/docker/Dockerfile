@@ -1,4 +1,4 @@
-FROM docker:19.03.6
+FROM docker:19.03.12
 
 RUN apk add --no-cache \
         curl \
@@ -15,4 +15,4 @@ RUN apk add --no-cache \
     && pip3 install \
           --no-cache-dir \
           --ignore-installed \
-          docker-compose==1.25.4
+          docker-compose==1.26.2
